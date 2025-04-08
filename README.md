@@ -17,4 +17,4 @@ StoreApp is an online shopping application that allows users to browse products 
 1. Ensure Flutter is installed on your device.
 2. Run the following command to get the packages:
 ``` bash
-get flutterpub
+ flutter pub get
