@@ -45,6 +45,7 @@ dependencies:
   dartz: ^0.10.1
   dio: ^5.8.0+1
   bloc: ^9.0.0
+  cloud_firestore: ^5.6.6
 
 dev_dependencies:
   flutter_test:
@@ -72,11 +73,9 @@ flutter:
   assets:
     - lib/images/login.png
     - lib/images/register.png
-    - lib/images/google.png
-    - lib/images/car.png
     - lib/images/contactus.png
+    - lib/images/E-Commerce-App-photo2.webp
   
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

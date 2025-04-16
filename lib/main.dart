@@ -33,9 +33,7 @@ class _MyAppState extends State<MyApp> {
         "registerpage": (context) => RegisterPage(),
         "homepage": (context) => HomePage(),
       },
-      home: Scaffold(
-        body: SplashPage()
-      ),
+      home: Scaffold(body: SplashPage()),
     );
   }
 }

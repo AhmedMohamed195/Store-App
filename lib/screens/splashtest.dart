@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/auth/login-page.dart';
-import 'package:store_app/cubit/cubit/product_cubit.dart';
+import 'package:store_app/cubit/cubit_product/product_cubit.dart';
 import 'package:store_app/screens/home-page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -32,10 +32,8 @@ class _SplashPageState extends State<SplashPage> {
                     )),
           );
         } else {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => LoginPage()),
-          );
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => LoginPage()));
         }
       },
     );
@@ -43,18 +41,22 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    double fontSize = screenWidth * 0.10;
+    fontSize = fontSize.clamp(28, 60);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: RichText(
-          text: const TextSpan(
+          text: TextSpan(
             children: [
               TextSpan(
                 text: 'Store ',
                 style: TextStyle(
                   color: Color(0xFFBF360C),
                   fontWeight: FontWeight.bold,
-                  fontSize: 36,
+                  fontSize: fontSize, 
                 ),
               ),
               TextSpan(
@@ -62,7 +64,7 @@ class _SplashPageState extends State<SplashPage> {
                 style: TextStyle(
                   color: Color(0xFFFFA726),
                   fontWeight: FontWeight.bold,
-                  fontSize: 36,
+                  fontSize: fontSize, 
                 ),
               ),
             ],

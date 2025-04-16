@@ -8,8 +8,10 @@ part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
   ProductCubit() : super(ProductInitial());
+ 
   GetAllProductsServices getAllProductsServices = GetAllProductsServices();
   List<ProductModel> searchproduct = [];
+ 
   Future<void> getProducts() async {
     emit(ProductLoading());
     final result = await getAllProductsServices.getAllProducts();

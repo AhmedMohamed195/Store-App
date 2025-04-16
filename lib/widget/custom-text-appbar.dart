@@ -5,23 +5,27 @@ class CustomTextAppBarHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    double fontSize = screenWidth * 0.07;
+
     return RichText(
-      text: const TextSpan(
+      text: TextSpan(
         children: [
           TextSpan(
             text: 'Store ',
             style: TextStyle(
-              color: Colors.red, // برتقالي محترق
+              color: Colors.red,
               fontWeight: FontWeight.bold,
-              fontSize: 24,
+              fontSize: fontSize,
             ),
           ),
           TextSpan(
             text: 'App',
             style: TextStyle(
-              color: Colors.orange, // بني شوكولاتة
+              color: Colors.orange,
               fontWeight: FontWeight.bold,
-              fontSize: 24,
+              fontSize: fontSize,
             ),
           ),
         ],

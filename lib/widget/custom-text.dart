@@ -34,14 +34,17 @@ class CustomText extends StatelessWidget {
       case "bottomright":
         return Alignment.bottomRight;
       default:
-        return Alignment.centerLeft; // Default to centerLeft if invalid string
+        return Alignment.centerLeft;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final paddingleft = MediaQuery.of(context).size.width;
+    final paddingright = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.only(left: 15),
+      padding:
+          EdgeInsets.only(left: paddingleft * 0.04, right: paddingright * 0.03),
       alignment: getAlignmentFromString(),
       child: Text(
         text,

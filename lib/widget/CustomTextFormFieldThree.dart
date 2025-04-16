@@ -21,8 +21,11 @@ class CustomTextFormFieldThree extends StatefulWidget {
 class _CustomTextFormFieldTwoState extends State<CustomTextFormFieldThree> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+ double screenheight = MediaQuery.of(context).size.height;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 3, vertical: 10),
+      margin:
+          EdgeInsets.symmetric(horizontal: screenWidth * 0.02, vertical: screenheight*0.02),
       child: TextFormField(
         onChanged: widget.onchanged,
         controller: widget.mycontroller,
@@ -30,8 +33,8 @@ class _CustomTextFormFieldTwoState extends State<CustomTextFormFieldThree> {
           fillColor: Colors.grey[200],
           filled: true,
           contentPadding: EdgeInsets.symmetric(
-            vertical: 15,
-            horizontal: 15,
+            vertical: screenheight*0.02,
+            horizontal: screenWidth * 0.04,
           ),
           prefixIcon: Icon(Icons.search, color: Colors.grey),
           hintText: widget.hinttext,
@@ -41,7 +44,7 @@ class _CustomTextFormFieldTwoState extends State<CustomTextFormFieldThree> {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey, width: 2),
+            borderSide: BorderSide(color: Colors.grey, width: screenWidth*0.002),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),

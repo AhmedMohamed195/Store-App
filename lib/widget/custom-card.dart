@@ -2,6 +2,7 @@
 
 import 'package:store_app/models/products_model.dart';
 import 'package:flutter/material.dart';
+import 'package:store_app/screens/product-datail.dart';
 
 class CustomCard extends StatelessWidget {
   final ProductModel product;
@@ -9,70 +10,81 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade100,
-                blurRadius: 30,
-                spreadRadius: 20,
-                offset: const Offset(0, 1),
-              ),
-            ],
-          ),
-          child: Card(
-            elevation: 10,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                  product.title!.substring(0, 8),
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
-                    style: const TextStyle(color: Colors.grey, fontSize: 15),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          product.description!.substring(0, 8),
-                          
-                          style:
-                              const TextStyle(color: Colors.black, fontSize: 20),
-                        ),
+    return InkWell(
+      onTap: () async {
+        FocusScope.of(context).unfocus();
+        await Future.delayed(Duration(milliseconds: 300));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ProductDetailsPage(product: product)));
+      },
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade100,
+                  blurRadius: 30,
+                  spreadRadius: 20,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: Card(
+              elevation: 10,
+              child: Padding(
+                padding: EdgeInsets.all(screenWidth * 0.04),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      product.title!.substring(0, 15),
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: screenWidth * 0.045,
                       ),
-                      
-                      IconButton(
-                        padding: const EdgeInsets.all(0),
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.favorite,
-                          color: Colors.red,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "${product.description!.substring(0, 12)}...",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: screenWidth * 0.05),
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
+                        IconButton(
+                          padding: const EdgeInsets.all(0),
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          right: 20,
-          top: -65,
-          child: Image.network(
-           product.image!,
-           
-            height: 100,
-            width: 100,
+          Positioned(
+            right: screenWidth * 0.05,
+            top: -screenHeight * 0.08,
+            child: Image.network(
+              product.image!,
+              height: screenWidth * 0.25,
+              width: screenWidth * 0.25,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

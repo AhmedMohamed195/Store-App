@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/cubit/cubit/product_cubit.dart';
+import 'package:store_app/cubit/cubit_product/product_cubit.dart';
 import 'package:store_app/screens/drawer/drawer-page.dart';
 import 'package:store_app/widget/CustomTextFormFieldThree.dart';
 import 'package:store_app/widget/custom-card.dart';
@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  // Filter the products based on the search input
   void _filterProducts(String query) {
     context.read<ProductCubit>().searchforproduct(query);
   }
@@ -39,15 +38,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       drawer: DrawerPage(),
       appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: CustomTextAppBarHome()),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: CustomTextAppBarHome(),
+      ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 5),
+        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -59,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               SizedBox(
-                height: 70,
+                height: screenHeight * 0.08,
               ),
               BlocBuilder<ProductCubit, ProductState>(
                 builder: (context, state) {
@@ -72,12 +75,11 @@ class _HomePageState extends State<HomePage> {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: state.allproduct.length,
                       clipBehavior: Clip.none,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 1,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 100,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: screenWidth > 600 ? 3 : 2,
+                        childAspectRatio: screenWidth > 600 ? 1.2 : 1,
+                        crossAxisSpacing: screenWidth * 0.03,
+                        mainAxisSpacing: screenHeight * 0.1,
                       ),
                       itemBuilder: (context, index) {
                         return CustomCard(
@@ -101,34 +103,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////خاصه اثناء الضغط على الصوره
-//  onTap: () {
-//                       Navigator.of(context).push(MaterialPageRoute(
-//                         builder: (context) => ItemDetiles(
-//                           data: items[i],
-//                         ),
-//                       ));
-//                     },
- 

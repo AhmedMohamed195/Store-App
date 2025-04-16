@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 
 class AboutUsPage extends StatelessWidget {
@@ -7,82 +6,101 @@ class AboutUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    double padding = screenWidth * 0.04;
+    double titleFontSize = screenWidth * 0.067;
+    double bodyFontSize = screenWidth * 0.046;
+    double sectionTitleFontSize = screenWidth * 0.06;
+    double avatarRadius = screenWidth * 0.16;
+    double spacing = screenHeight * 0.02;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("About Us"),
+        title: Text(
+          "About Us",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: titleFontSize,
+          ),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(padding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Logo or Image
             CircleAvatar(
-              radius: 50,
-              // backgroundImage: AssetImage('assets/store_logo.png'), // Replace with your logo
+              radius: avatarRadius,
+              backgroundImage:
+                  AssetImage('lib/images/E-Commerce-App-photo2.webp'),
             ),
-            const SizedBox(height: 16),
-
-            // Store Name
-            const Text(
-              "My Store",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            SizedBox(height: spacing),
+            Text(
+              "My Store App",
+              style: TextStyle(
+                fontSize: sectionTitleFontSize,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-
-            const SizedBox(height: 12),
-
-            // Company Description
-            const Text(
+            SizedBox(height: spacing * 0.8),
+            Text(
               "Welcome to My Store – your one-stop destination for quality products at unbeatable prices. "
               "We’re passionate about delivering excellent service and hand-picked items to meet your needs.",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: TextStyle(
+                fontSize: bodyFontSize,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-
-            const SizedBox(height: 24),
-
-            // Mission Section
-            const Align(
+            SizedBox(height: spacing * 1.5),
+            Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Our Mission",
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black),
+                  fontSize: sectionTitleFontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-            const SizedBox(height: 8),
-            const Text(
+            SizedBox(height: spacing * 0.5),
+            Text(
               "To provide a seamless shopping experience with top-notch customer service and the best selection of products.",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: TextStyle(
+                fontSize: bodyFontSize,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-
-            const SizedBox(height: 24),
-
-            // Vision Section
-            const Align(
+            SizedBox(height: spacing * 1.5),
+            Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Our Vision",
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black),
+                  fontSize: sectionTitleFontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-            const SizedBox(height: 8),
-            const Text(
+            SizedBox(height: spacing * 0.5),
+            Text(
               "To be the most customer-centric online store, where people can find and discover anything they want to buy.",
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: TextStyle(
+                fontSize: bodyFontSize,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-
-            const SizedBox(height: 24),
-
-            // Contact Info
+            SizedBox(height: spacing * 1.5),
           ],
         ),
       ),
